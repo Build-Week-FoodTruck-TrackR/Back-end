@@ -7,7 +7,7 @@ const authPortal = require('../auth/portal')
 
 
 //PUBLIC ROUTES
-primaryRouter.use('/locations',locationsRouter)
+primaryRouter.use('/locations/',locationsRouter)
 
 //PRIVATE ROUTES
 primaryRouter.use('/users',users)

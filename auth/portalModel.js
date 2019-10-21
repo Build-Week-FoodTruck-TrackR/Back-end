@@ -30,8 +30,7 @@ function findByUserName(user){
 function addUser(obj){
     return db(table)
     .insert(obj)
-    .then(([id]) =>findById(id))
-    
+    .then(([id]) =>findById(id))    
     // .then(id=>{
     //     findById(id)
     // })

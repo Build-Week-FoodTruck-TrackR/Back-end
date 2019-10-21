@@ -2,6 +2,10 @@ const router = require("express").Router();
 const dbModel = require("./portalModel");
 
 
+//DOCS
+router.use("/*", (req, res, next) => {
+  req.isValid ? next() : res.status(200).json(shape) 
+});
 
 //LOGIN
 router.post("/login", (req, res) => {
@@ -12,19 +16,19 @@ router.post("/login", (req, res) => {
 });
 
 router.post("/register", (req, res) => {
+  console.log(1)
   const u = req.body
   dbModel
     .addUser(u)
     .then(u => {
       res.status(200).json({ messag: "success", ...u });
-    }).catch(err =>res.json({message:`Sorry, User,${u.username},Already Exists`}))
+    }).catch(err =>res.json({message:`Sorry, User,${u.username},Already Exists`,...err}))
 });
 
 
-//DOCS
-router.get("/?*", (req, res, next) => {
-  res.status(200).json(shape) 
-});
+
+
+
 
 const shape = {
   register:{
